@@ -32,8 +32,6 @@
     nixd
     yt-dlp
     ffmpeg
-    rustdesk
-    lmstudio
     # Custom bin
     (pkgs.writeShellScriptBin "rebuild" ''
       sudo nixos-rebuild switch --flake ~/turret#default

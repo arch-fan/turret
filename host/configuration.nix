@@ -16,6 +16,22 @@
     home-manager.nixosModules.default
   ];
 
+  nix = {
+    package = pkgs.nix;
+    optimise.automatic = true;
+    settings.auto-optimise-store = true;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+
+    settings = {
+      substituters =
+        [ "https://cache.nixos.org/" "https://nix-community.cachix.org" ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+    };
+  };
+
   # --- Custom configuration ---
   home-manager.users.juan = import ./home.nix;
   nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
@@ -25,10 +41,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.optimise.automatic = true;
-  nix.settings.auto-optimise-store = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
