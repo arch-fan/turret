@@ -21,7 +21,7 @@
     # hmcl
 
     # ---- Coding ----
-    python310Full
+    python310
     gemini-cli
     nodejs
     pnpm
