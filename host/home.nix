@@ -97,21 +97,21 @@
   };
 
   # Custom services
-  systemd.user.services.pahome-lxd-tunnel = {
-    Unit = {
-      Description = "SSH Tunnel for LXD";
-      After = "network.target";
-    };
+  # systemd.user.services.pahome-lxd-tunnel = {
+  #   Unit = {
+  #     Description = "SSH Tunnel for LXD";
+  #     After = "network.target";
+  #   };
 
-    Service = {
-      ExecStart = "${pkgs.openssh}/bin/ssh -q -N -L 8443:localhost:8443 pahome";
-      StandardOutput = "journal";
-      StandardError = "journal";
-      WorkingDirectory = "/home/juan";
-    };
+  #   Service = {
+  #     ExecStart = "${pkgs.openssh}/bin/ssh -q -N -L 8443:localhost:8443 pahome";
+  #     StandardOutput = "journal";
+  #     StandardError = "journal";
+  #     WorkingDirectory = "/home/juan";
+  #   };
 
-    Install = { WantedBy = [ "default.target" ]; };
-  };
+  #   Install = { WantedBy = [ "default.target" ]; };
+  # };
 
   # Alias
   home.shellAliases = { tree = "ls --tree"; };
